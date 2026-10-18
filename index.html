@@ -1,154 +1,47 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#101014">
-<meta name="description" content="Overlord Everything — бесплатные онлайн-инструменты для игр, текстов и повседневных задач.">
-<title>Overlord Everything</title>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Overlord Everything — бесплатные инструменты для геймеров, социальных сетей и повседневных задач.">
+<meta name="theme-color" content="#10111b">
+<title>Overlord Everything — Free Online Tools</title>
 <style>
-*{box-sizing:border-box}
-body{margin:0;background:#101014;color:#f5f5f7;font-family:Arial,sans-serif}
-header{padding:28px 18px;background:#191923;border-bottom:1px solid #38384a}
-.wrap{max-width:850px;margin:auto}
-h1{color:#b79aff;margin:0 0 10px;font-size:30px}
-header p{color:#c5c5d1;line-height:1.5}
-select,button,input{font:inherit;border-radius:10px;padding:12px;border:1px solid #45455a}
-select,input{background:#20202b;color:white;max-width:100%}
-button{background:#7854d8;color:white;border:0;cursor:pointer}
-button:active{transform:scale(.98)}
-main{max-width:850px;margin:auto;padding:18px}
-.tools{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
-.card{background:#1b1b25;border:1px solid #373747;border-radius:16px;padding:18px}
-.card h2{font-size:19px;margin-top:0}
-.card p{color:#bdbdca;line-height:1.5}
-.row{display:flex;gap:8px;flex-wrap:wrap}
-.row input{flex:1;min-width:100px}
-.result{overflow-wrap:anywhere;min-height:24px;margin-top:14px;color:#c5b0ff}
-footer{text-align:center;padding:28px;color:#aaa;font-size:13px}
-a{color:#c5b0ff}
+:root{--bg:#0c0d14;--panel:#151722;--panel2:#1b1e2c;--text:#f4f5fb;--muted:#a9aec3;--accent:#a78bfa;--accent2:#6ee7f9;--line:#2b2f42}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#20203a 0%,var(--bg) 55%);color:var(--text);font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;min-height:100vh}header{max-width:1100px;margin:auto;padding:22px 20px;display:flex;justify-content:space-between;align-items:center;gap:16px}.brand{font-weight:900;letter-spacing:.04em;font-size:1.1rem}.brand span{color:var(--accent)}select,button,input{font:inherit;border-radius:12px;border:1px solid var(--line);padding:11px 13px;background:var(--panel2);color:var(--text)}main{max-width:1100px;margin:auto;padding:28px 20px 70px}.hero{text-align:center;padding:36px 0 30px}.eyebrow{color:var(--accent2);font-weight:700;letter-spacing:.16em;text-transform:uppercase;font-size:.78rem}.hero h1{font-size:clamp(2.2rem,7vw,4.4rem);line-height:1.05;margin:14px 0}.hero h1 em{font-style:normal;color:var(--accent)}.hero p{max-width:650px;margin:0 auto;color:var(--muted);font-size:1.08rem}.notice{max-width:760px;margin:24px auto 0;padding:12px 15px;border:1px solid var(--line);border-radius:14px;color:var(--muted);font-size:.9rem;background:#11131dcc}.section-title{margin:36px 0 15px;font-size:1.35rem}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}.card{background:linear-gradient(145deg,var(--panel),#11131d);border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:0 12px 35px #0002}.icon{font-size:1.8rem}.card h3{margin:8px 0 5px}.card p{margin:0 0 14px;color:var(--muted);font-size:.94rem}.tool{margin-top:14px;padding-top:14px;border-top:1px solid var(--line)}.row{display:flex;gap:8px;flex-wrap:wrap}.row input{flex:1;min-width:130px}.primary{cursor:pointer;border:0;background:linear-gradient(100deg,#8b5cf6,#6366f1);font-weight:750}.primary:hover{filter:brightness(1.1)}.result{margin-top:10px;word-break:break-word;color:var(--accent2);min-height:1.4em}.password-result{font-family:ui-monospace,monospace}.qrbox{margin-top:12px;background:#fff;border-radius:12px;padding:12px;display:inline-block;min-height:0}.qrbox:empty{display:none}.palette{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.swatch{flex:1;min-width:72px;border-radius:10px;overflow:hidden;border:1px solid var(--line)}.swatch-color{height:55px}.swatch code{display:block;padding:6px;text-align:center;font-size:.78rem}.small{font-size:.84rem;color:var(--muted)}.pill{display:inline-block;padding:5px 9px;border:1px solid var(--line);border-radius:99px;color:var(--muted);font-size:.78rem;margin:3px}footer{border-top:1px solid var(--line);max-width:1100px;margin:auto;padding:22px 20px 35px;color:var(--muted);font-size:.88rem;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}a{color:var(--accent2)}@media(max-width:560px){header{align-items:flex-start}.brand{max-width:190px}.hero{padding-top:22px}.card{padding:17px}}
 </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" defer></script>
 </head>
 <body>
-<header>
-<div class="wrap">
-<h1>OVERLORD EVERYTHING</h1>
-<p id="intro">Бесплатные инструменты для игр, творчества и повседневных задач.</p>
-<select id="lang" aria-label="Language">
-<option value="ru">Русский</option>
-<option value="uk">Українська</option>
-<option value="en">English</option>
-</select>
-</div>
-</header>
+<header><div class="brand">OVERLORD <span>EVERYTHING</span></div><label aria-label="Language"><select id="language"><option value="ru">🇷🇺 Русский</option><option value="uk">🇺🇦 Українська</option><option value="en">🌍 English</option></select></label></header>
 <main>
-<div class="tools">
-<section class="card">
-<h2 id="t1">🎮 Генератор ников</h2>
-<p id="d1">Создай игровой никнейм.</p>
-<div class="row">
-<input id="nickInput" placeholder="Твоё слово (необязательно)">
-<button id="nickBtn" onclick="nickname()">Создать</button>
-</div>
-<div class="result" id="nickResult"></div>
+<section class="hero"><div class="eyebrow" data-i18n="eyebrow">БЕСПЛАТНЫЕ ОНЛАЙН-ИНСТРУМЕНТЫ</div><h1>Overlord <em>Everything</em></h1><p data-i18n="intro">Полезные инструменты для игр, социальных сетей и повседневных задач — бесплатно и прямо в браузере.</p><div class="notice" data-i18n="notice">Первая версия проекта. Инструменты работают прямо на твоём устройстве; данные не отправляются на сервер.</div></section>
+<h2 class="section-title" data-i18n="toolsTitle">Инструменты</h2>
+<section class="grid">
+<article class="card"><div class="icon">🎮</div><h3 data-i18n="nickTitle">Генератор ников</h3><p data-i18n="nickDesc">Придумай ник для игр, Twitch, Discord или Telegram.</p><div class="tool"><div class="row"><input id="nickSeed" maxlength="18" data-placeholder="nickPlaceholder" placeholder="Слово или имя (необязательно)"><button class="primary" id="nickBtn" data-i18n="generate">Создать</button></div><div class="result" id="nickResult" aria-live="polite"></div></div></article>
+<article class="card"><div class="icon">✍️</div><h3 data-i18n="textTitle">Стилизованный текст</h3><p data-i18n="textDesc">Сделай текст заметнее для профиля или сообщения.</p><div class="tool"><div class="row"><input id="textInput" maxlength="80" data-placeholder="textPlaceholder" placeholder="Введи текст"><button class="primary" id="textBtn" data-i18n="convert">Преобразовать</button></div><div class="result" id="textResult" aria-live="polite"></div><button id="copyText" data-i18n="copy" hidden>Копировать</button></div></article>
+<article class="card"><div class="icon">🔐</div><h3 data-i18n="passTitle">Генератор паролей</h3><p data-i18n="passDesc">Создай случайный пароль. Генерация происходит в браузере.</p><div class="tool"><div class="row"><select id="passLength" aria-label="Password length"><option value="12">12</option><option value="16" selected>16</option><option value="20">20</option><option value="24">24</option><option value="32">32</option></select><button class="primary" id="passBtn" data-i18n="makePass">Создать пароль</button></div><div class="result password-result" id="passResult" aria-live="polite"></div><button id="copyPass" data-i18n="copy" hidden>Копировать</button></div></article>
+<article class="card"><div class="icon">🧩</div><h3 data-i18n="ideasTitle">Идеи для профиля</h3><p data-i18n="ideasDesc">Быстрые идеи для оформления игрового профиля и аватарки.</p><div class="tool"><button class="primary" id="ideaBtn" data-i18n="getIdea">Получить идею</button><div class="result" id="ideaResult" aria-live="polite"></div></div></article>
+<article class="card"><div class="icon">📱</div><h3 data-i18n="qrTitle">Генератор QR-кодов</h3><p data-i18n="qrDesc">Создай QR-код для ссылки или короткого текста.</p><div class="tool"><div class="row"><input id="qrInput" maxlength="500" data-placeholder="qrPlaceholder" placeholder="Вставь ссылку или текст"><button class="primary" id="qrBtn" data-i18n="qrMake">Создать QR</button></div><div id="qrResult" class="qrbox" aria-live="polite"></div><p class="small" data-i18n="qrNote">Для генерации загружается библиотека QR-кодов.</p></div></article>
+<article class="card"><div class="icon">🔢</div><h3 data-i18n="countTitle">Счётчик слов и символов</h3><p data-i18n="countDesc">Проверь длину текста для публикации или описания.</p><div class="tool"><textarea id="countInput" rows="4" maxlength="10000" data-placeholder="countPlaceholder" placeholder="Вставь свой текст" style="width:100%;resize:vertical"></textarea><div class="result" id="countResult" aria-live="polite">Символов: 0 · Слов: 0</div></div></article>
+<article class="card"><div class="icon">👤</div><h3 data-i18n="bioTitle">Генератор описания профиля</h3><p data-i18n="bioDesc">Создай короткое описание для Twitch, Discord, TikTok или Telegram.</p><div class="tool"><div class="row"><select id="bioPlatform" aria-label="Platform"><option value="Twitch">Twitch</option><option value="Discord">Discord</option><option value="TikTok">TikTok</option><option value="Telegram">Telegram</option></select><button class="primary" id="bioBtn" data-i18n="bioMake">Создать описание</button></div><div class="result" id="bioResult" aria-live="polite"></div><button id="copyBio" data-i18n="copy" hidden>Копировать</button></div></article>
+<article class="card"><div class="icon">🎨</div><h3 data-i18n="paletteTitle">Генератор цветовых палитр</h3><p data-i18n="paletteDesc">Подбери цвета для аватарки, баннера или игрового профиля.</p><div class="tool"><button class="primary" id="paletteBtn" data-i18n="paletteMake">Новая палитра</button><div id="paletteResult" class="palette" aria-live="polite"></div></div></article>
 </section>
-<section class="card">
-<h2 id="t2">✍️ Красивый текст</h2>
-<p id="d2">Преобразуй текст для профиля.</p>
-<div class="row">
-<input id="textInput" placeholder="Введи текст">
-<button id="textBtn" onclick="stylize()">Преобразовать</button>
-</div>
-<div class="result" id="textResult"></div>
-</section>
-<section class="card">
-<h2 id="t3">🔐 Генератор паролей</h2>
-<p id="d3">Создай случайный пароль прямо в браузере.</p>
-<div class="row">
-<input id="passLen" type="number" min="8" max="64" value="16" aria-label="Длина пароля">
-<button id="passBtn" onclick="password()">Создать</button>
-</div>
-<div class="result" id="passResult"></div>
-</section>
-<section class="card">
-<h2 id="t4">💡 Идеи для профиля</h2>
-<p id="d4">Получай идеи для оформления своего профиля.</p>
-<button id="ideaBtn" onclick="idea()">Новая идея</button>
-<div class="result" id="ideaResult"></div>
-</section>
-</div>
-</main>
-<footer>OVERLORD EVERYTHING · <span id="foot">Бесплатные онлайн-инструменты</span></footer>
+<h2 class="section-title" data-i18n="moreTitle">Больше возможностей скоро</h2><div><span class="pill">Minecraft</span><span class="pill">Twitch</span><span class="pill">Discord</span><span class="pill">Telegram</span><span class="pill">Text tools</span><span class="pill">Gaming</span></div>
+<div class="notice" data-i18n="businessNote">План монетизации: сначала создаём полезный сайт и привлекаем аудиторию, затем проверяем доступность рекламных и партнёрских программ. Доход не гарантирован; реклама здесь пока не подключена.</div>
+</main><footer><span>© <span id="year"></span> Overlord Everything</span><span data-i18n="footer">Сделано как стартовый проект. Бесплатные инструменты, без регистрации.</span></footer>
 <script>
 const translations={
-ru:{
-intro:"Бесплатные инструменты для игр, творчества и повседневных задач.",
-t1:"🎮 Генератор ников",d1:"Создай игровой никнейм.",nph:"Твоё слово (необязательно)",nb:"Создать",
-t2:"✍️ Красивый текст",d2:"Преобразуй текст для профиля.",tph:"Введи текст",tb:"Преобразовать",
-t3:"🔐 Генератор паролей",d3:"Создай случайный пароль прямо в браузере.",pb:"Создать",
-t4:"💡 Идеи для профиля",d4:"Получай идеи для оформления своего профиля.",ib:"Новая идея",
-foot:"Бесплатные онлайн-инструменты",ideas:["Неоновый фиолетовый стиль","Тёмный минимализм","Киберпанк и зелёные акценты","Чёрно-белый аниме-стиль","Космическая тема с сиянием"]
-},
-uk:{
-intro:"Безкоштовні інструменти для ігор, творчості та щоденних завдань.",
-t1:"🎮 Генератор нікнеймів",d1:"Створи ігровий нікнейм.",nph:"Твоє слово (необов'язково)",nb:"Створити",
-t2:"✍️ Гарний текст",d2:"Перетвори текст для профілю.",tph:"Введи текст",tb:"Перетворити",
-t3:"🔐 Генератор паролів",d3:"Створи випадковий пароль у браузері.",pb:"Створити",
-t4:"💡 Ідеї для профілю",d4:"Отримуй ідеї для оформлення профілю.",ib:"Нова ідея",
-foot:"Безкоштовні онлайн-інструменти",ideas:["Неоновий фіолетовий стиль","Темний мінімалізм","Кіберпанк і зелені акценти","Чорно-білий аніме-стиль","Космічна тема зі сяйвом"]
-},
-en:{
-intro:"Free tools for gaming, creativity and everyday tasks.",
-t1:"🎮 Nickname generator",d1:"Create a gaming nickname.",nph:"Your word (optional)",nb:"Generate",
-t2:"✍️ Fancy text",d2:"Transform text for your profile.",tph:"Enter text",tb:"Transform",
-t3:"🔐 Password generator",d3:"Generate a random password in your browser.",pb:"Generate",
-t4:"💡 Profile ideas",d4:"Get ideas for your profile design.",ib:"New idea",
-foot:"Free online tools",ideas:["Neon purple style","Dark minimalism","Cyberpunk with green accents","Black and white anime style","Glowing cosmic theme"]
-}
-};
-function tr(){return translations[document.getElementById("lang").value]}
-function setLanguage(){
-let t=tr();
-["intro","t1","d1","t2","d2","t3","d3","t4","d4","foot"].forEach(id=>document.getElementById(id).textContent=t[id]);
-document.getElementById("nickInput").placeholder=t.nph;
-document.getElementById("nickBtn").textContent=t.nb;
-document.getElementById("textInput").placeholder=t.tph;
-document.getElementById("textBtn").textContent=t.tb;
-document.getElementById("passBtn").textContent=t.pb;
-document.getElementById("ideaBtn").textContent=t.ib;
-document.documentElement.lang=document.getElementById("lang").value;
-}
-document.getElementById("lang").addEventListener("change",setLanguage);
-function nickname(){
-let base=document.getElementById("nickInput").value.trim();
-let a=["Dark","Over","Night","Shadow","Neo","Cyber","Ghost","Lunar"];
-let b=["Lord","Wolf","Storm","Blade","Nexus","Phantom","Core","Frost"];
-let name=base||a[Math.floor(Math.random()*a.length)]+b[Math.floor(Math.random()*b.length)];
-document.getElementById("nickResult").textContent=name;
-}
-function stylize(){
-let s=document.getElementById("textInput").value.trim();
-if(!s){document.getElementById("textResult").textContent="";return}
-let map={"a":"𝒂","b":"𝒃","c":"𝒄","d":"𝒅","e":"𝒆","f":"𝒇","g":"𝒈","h":"𝒉","i":"𝒊","j":"𝒋","k":"𝒌","l":"𝒍","m":"𝒎","n":"𝒏","o":"𝒐","p":"𝒑","q":"𝒒","r":"𝒓","s":"𝒔","t":"𝒕","u":"𝒖","v":"𝒗","w":"𝒘","x":"𝒙","y":"𝒚","z":"𝒛"};
-document.getElementById("textResult").textContent=s.split("").map(c=>map[c.toLowerCase()]||c).join("");
-}
-function password(){
-let n=Math.max(8,Math.min(64,Number(document.getElementById("passLen").value)||16));
-let chars="ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789!@#$%&*?";
-let out="";
-if(window.crypto&&crypto.getRandomValues){
-let bytes=new Uint8Array(n);crypto.getRandomValues(bytes);
-for(let x of bytes)out+=chars[x%chars.length];
-}else{
-for(let i=0;i<n;i++)out+=chars[Math.floor(Math.random()*chars.length)];
-}
-document.getElementById("passResult").textContent=out;
-}
-function idea(){
-let list=tr().ideas;
-document.getElementById("ideaResult").textContent=list[Math.floor(Math.random()*list.length)];
-}
-setLanguage();
-</script>
-</body>
-  </html>
+ru:{eyebrow:'БЕСПЛАТНЫЕ ОНЛАЙН-ИНСТРУМЕНТЫ',intro:'Полезные инструменты для игр, социальных сетей и повседневных задач — бесплатно и прямо в браузере.',notice:'Первая версия проекта. Инструменты работают прямо на твоём устройстве; данные не отправляются на сервер.',toolsTitle:'Инструменты',nickTitle:'Генератор ников',nickDesc:'Придумай ник для игр, Twitch, Discord или Telegram.',nickPlaceholder:'Слово или имя (необязательно)',generate:'Создать',textTitle:'Стилизованный текст',textDesc:'Сделай текст заметнее для профиля или сообщения.',textPlaceholder:'Введи текст',convert:'Преобразовать',copy:'Копировать',passTitle:'Генератор паролей',passDesc:'Создай случайный пароль. Генерация происходит в браузере.',makePass:'Создать пароль',ideasTitle:'Идеи для профиля',ideasDesc:'Быстрые идеи для оформления игрового профиля и аватарки.',getIdea:'Получить идею',moreTitle:'Больше возможностей скоро',businessNote:'План монетизации: сначала создаём полезный сайт и привлекаем аудиторию, затем проверяем доступность рекламных и партнёрских программ. Доход не гарантирован; реклама здесь пока не подключена.',footer:'Стартовый проект. Бесплатные инструменты, без регистрации.',copied:'Скопировано!',nickEmpty:'Ник:',ideas:['Тёмная тема, фиолетовый акцент и минималистичный символ.','Киберпанк-аватар с неоновым контуром и тёмным фоном.','Единый ник и одинаковая цветовая палитра на всех платформах.','Минималистичный баннер с игровым ником и одной яркой деталью.'],qrTitle:'Генератор QR-кодов',qrDesc:'Создай QR-код для ссылки или короткого текста.',qrPlaceholder:'Вставь ссылку или текст',qrMake:'Создать QR',qrNote:'QR-код создаётся в браузере; для этого нужна загрузка библиотеки.',countTitle:'Счётчик слов и символов',countDesc:'Проверь длину текста для публикации или описания.',countPlaceholder:'Вставь свой текст',countResult:'Символов: {chars} · Слов: {words}',bioTitle:'Генератор описания профиля',bioDesc:'Создай короткое описание для Twitch, Discord, TikTok или Telegram.',bioMake:'Создать описание',paletteTitle:'Генератор цветовых палитр',paletteDesc:'Подбери цвета для аватарки, баннера или игрового профиля.',paletteMake:'Новая палитра',bioIdeas:['🎮 Геймер по жизни | Новые игры и хорошая компания','🌙 Ночной игрок · тёмная эстетика · свой путь','⚡ Играю, общаюсь, создаю свой мир','🕹️ Игры • стримы • моменты, которые запоминаются']},
+uk:{eyebrow:'БЕЗКОШТОВНІ ОНЛАЙН-ІНСТРУМЕНТИ',intro:'Корисні інструменти для ігор, соціальних мереж і щоденних завдань — безкоштовно та просто у браузері.',notice:'Перша версія проєкту. Інструменти працюють на твоєму пристрої; дані не надсилаються на сервер.',toolsTitle:'Інструменти',nickTitle:'Генератор нікнеймів',nickDesc:'Придумай нік для ігор, Twitch, Discord або Telegram.',nickPlaceholder:'Слово або ім’я (необов’язково)',generate:'Створити',textTitle:'Стилізований текст',textDesc:'Зроби текст помітнішим для профілю або повідомлення.',textPlaceholder:'Введи текст',convert:'Перетворити',copy:'Копіювати',passTitle:'Генератор паролів',passDesc:'Створи випадковий пароль. Генерація відбувається у браузері.',makePass:'Створити пароль',ideasTitle:'Ідеї для профілю',ideasDesc:'Швидкі ідеї для оформлення ігрового профілю та аватарки.',getIdea:'Отримати ідею',moreTitle:'Більше можливостей незабаром',businessNote:'План монетизації: спочатку створюємо корисний сайт і залучаємо аудиторію, потім перевіряємо доступність рекламних і партнерських програм. Дохід не гарантований; рекламу поки не підключено.',footer:'Стартовий проєкт. Безкоштовні інструменти, без реєстрації.',copied:'Скопійовано!',nickEmpty:'Нік:',ideas:['Темна тема, фіолетовий акцент і мінімалістичний символ.','Кіберпанк-аватар із неоновим контуром і темним тлом.','Один нік і єдина палітра кольорів на всіх платформах.','Мінімалістичний банер з ігровим ніком і яскравою деталлю.'],qrTitle:'Генератор QR-кодів',qrDesc:'Створи QR-код для посилання або короткого тексту.',qrPlaceholder:'Встав посилання або текст',qrMake:'Створити QR',qrNote:'QR-код створюється у браузері; потрібно завантажити бібліотеку.',countTitle:'Лічильник слів і символів',countDesc:'Перевір довжину тексту для допису чи опису.',countPlaceholder:'Встав свій текст',countResult:'Символів: {chars} · Слів: {words}',bioTitle:'Генератор опису профілю',bioDesc:'Створи короткий опис для Twitch, Discord, TikTok або Telegram.',bioMake:'Створити опис',paletteTitle:'Генератор кольорових палітр',paletteDesc:'Добери кольори для аватарки, банера або ігрового профілю.',paletteMake:'Нова палітра',bioIdeas:['🎮 Геймер у душі | Нові ігри та гарна компанія','🌙 Нічний гравець · темна естетика · власний шлях','⚡ Граю, спілкуюся, створюю свій світ','🕹️ Ігри • стрими • моменти, що запам’ятовуються']},
+en:{eyebrow:'FREE ONLINE TOOLS',intro:'Useful tools for gaming, social media, and everyday tasks — free and right in your browser.',notice:'First project version. Tools run on your device; your data is not sent to a server.',toolsTitle:'Tools',nickTitle:'Nickname generator',nickDesc:'Create a nickname for games, Twitch, Discord, or Telegram.',nickPlaceholder:'Word or name (optional)',generate:'Generate',textTitle:'Stylized text',textDesc:'Make your profile or message text stand out.',textPlaceholder:'Enter text',convert:'Transform',copy:'Copy',passTitle:'Password generator',passDesc:'Create a random password. Generation happens in your browser.',makePass:'Generate password',ideasTitle:'Profile ideas',ideasDesc:'Quick ideas for your gaming profile and avatar.',getIdea:'Get an idea',moreTitle:'More tools coming soon',businessNote:'Monetization plan: build a useful site and attract an audience first, then check advertising and affiliate options. Income is not guaranteed; ads are not connected yet.',footer:'Starter project. Free tools, no registration.',copied:'Copied!',nickEmpty:'Nickname:',ideas:['Dark theme, purple accent, and a minimalist symbol.','Cyberpunk avatar with neon edges and a dark background.','Use one nickname and consistent colors across platforms.','Minimal banner with your gaming name and one bright detail.'],qrTitle:'QR Code Generator',qrDesc:'Create a QR code for a link or short text.',qrPlaceholder:'Paste a link or text',qrMake:'Create QR',qrNote:'The QR code is created in your browser using a library.',countTitle:'Word and Character Counter',countDesc:'Check text length for a post or profile bio.',countPlaceholder:'Paste your text',countResult:'Characters: {chars} · Words: {words}',bioTitle:'Profile Bio Generator',bioDesc:'Create a short bio for Twitch, Discord, TikTok, or Telegram.',bioMake:'Create bio',paletteTitle:'Color Palette Generator',paletteDesc:'Pick colors for an avatar, banner, or gaming profile.',paletteMake:'New palette',bioIdeas:['🎮 Gamer for life | New games and good company','🌙 Night player · dark aesthetic · my own path','⚡ Gaming, chatting, building my own world','🕹️ Games • streams • memorable moments']}}
+let lang='ru';const t=k=>translations[lang][k]||translations.ru[k];function applyLanguage(){lang=document.getElementById('language').value;document.documentElement.lang=lang;document.querySelectorAll('[data-i18n]').forEach(el=>el.textContent=t(el.dataset.i18n));document.querySelectorAll('[data-placeholder]').forEach(el=>el.placeholder=t(el.dataset.placeholder));}
+document.getElementById('language').addEventListener('change',applyLanguage);document.getElementById('year').textContent=new Date().getFullYear();
+const pick=a=>a[Math.floor(Math.random()*a.length)];document.getElementById('nickBtn').onclick=()=>{const seed=document.getElementById('nickSeed').value.trim();const endings=['Nova','Shadow','Nexus','Prime','Phantom','Raven','Zero','Over','Vex','Echo','Void','Storm'];const styles=['','_','x',''];const result=(seed?seed.replace(/\s+/g,''):'Dark')+pick(styles)+pick(endings);document.getElementById('nickResult').textContent=result;};
+document.getElementById('textBtn').onclick=()=>{const s=document.getElementById('textInput').value.trim();const map={'a':'𝖆','b':'𝖇','c':'𝖈','d':'𝖉','e':'𝖊','f':'𝖋','g':'𝖌','h':'𝖍','i':'𝖎','j':'𝖏','k':'𝖐','l':'𝖑','m':'𝖒','n':'𝖓','o':'𝖔','p':'𝖕','q':'𝖖','r':'𝖗','s':'𝖘','t':'𝖙','u':'𝖚','v':'𝖛','w':'𝖜','x':'𝖝','y':'𝖞','z':'𝖟'};document.getElementById('textResult').textContent=s.split('').map(c=>map[c.toLowerCase()]||c).join('');document.getElementById('copyText').hidden=!s;};
+document.getElementById('passBtn').onclick=()=>{const chars='ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789!@#$%*-_';const len=+document.getElementById('passLength').value;const arr=new Uint32Array(len);if(window.crypto&&crypto.getRandomValues)crypto.getRandomValues(arr);else for(let i=0;i<len;i++)arr[i]=Math.floor(Math.random()*4294967295);document.getElementById('passResult').textContent=Array.from(arr,n=>chars[n%chars.length]).join('');document.getElementById('copyPass').hidden=false;};
+document.getElementById('ideaBtn').onclick=()=>document.getElementById('ideaResult').textContent=pick(t('ideas'));async function copyValue(id,button){const value=document.getElementById(id).textContent;if(!value)return;try{await navigator.clipboard.writeText(value);button.textContent=t('copied');setTimeout(()=>button.textContent=t('copy'),1300)}catch(e){const r=document.createRange();r.selectNodeContents(document.getElementById(id));const s=getSelection();s.removeAllRanges();s.addRange(r)}}document.getElementById('copyText').onclick=e=>copyValue('textResult',e.currentTarget);document.getElementById('copyPass').onclick=e=>copyValue('passResult',e.currentTarget);
+document.getElementById('countInput').addEventListener('input',()=>{const v=document.getElementById('countInput').value;const words=v.trim()?v.trim().split(/\s+/u).length:0;document.getElementById('countResult').textContent=t('countResult').replace('{chars}',v.length).replace('{words}',words);});
+document.getElementById('bioBtn').onclick=()=>{const arr=t('bioIdeas');document.getElementById('bioResult').textContent=document.getElementById('bioPlatform').value+' | '+pick(arr);document.getElementById('copyBio').hidden=false;};document.getElementById('copyBio').onclick=e=>copyValue('bioResult',e.currentTarget);
+const palettes=[['#A78BFA','#6EE7F9','#151722','#F4F5FB','#F472B6'],['#0F172A','#38BDF8','#A3E635','#F8FAFC','#7C3AED'],['#18181B','#EF4444','#F59E0B','#E5E7EB','#7F1D1D'],['#111827','#34D399','#60A5FA','#F9FAFB','#A78BFA'],['#201335','#B794F4','#FF6B9A','#6EE7F9','#F5F3FF']];document.getElementById('paletteBtn').onclick=()=>{const colors=pick(palettes);document.getElementById('paletteResult').innerHTML=colors.map(c=>'<div class=\"swatch\"><div class=\"swatch-color\" style=\"background:'+c+'\"></div><code>'+c+'</code></div>').join('');};
+document.getElementById('qrBtn').onclick=()=>{const value=document.getElementById('qrInput').value.trim(),box=document.getElementById('qrResult');box.innerHTML='';if(!value){box.textContent=lang==='en'?'Enter a link or text first':lang==='uk'?'Спочатку введи посилання або текст':'Сначала введи ссылку или текст';return;}if(!window.QRCode){box.textContent=lang==='en'?'Loading QR library… tap Create QR again in a moment.':lang==='uk'?'Завантажується бібліотека QR… натисни ще раз за мить.':'Загружается библиотека QR… нажми ещё раз через секунду.';return;}new QRCode(box,{text:value,width:200,height:200,colorDark:'#111827',colorLight:'#ffffff',correctLevel:QRCode.CorrectLevel.M});};
+
+</script></body></html>
