@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#101014">
+<meta name="description" content="Overlord Everything — бесплатные онлайн-инструменты для игр, текстов и повседневных задач.">
+<title>Overlord Everything</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#101014;color:#f5f5f7;font-family:Arial,sans-serif}
+header{padding:28px 18px;background:#191923;border-bottom:1px solid #38384a}
+.wrap{max-width:850px;margin:auto}
+h1{color:#b79aff;margin:0 0 10px;font-size:30px}
+header p{color:#c5c5d1;line-height:1.5}
+select,button,input{font:inherit;border-radius:10px;padding:12px;border:1px solid #45455a}
+select,input{background:#20202b;color:white;max-width:100%}
+button{background:#7854d8;color:white;border:0;cursor:pointer}
+button:active{transform:scale(.98)}
+main{max-width:850px;margin:auto;padding:18px}
+.tools{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.card{background:#1b1b25;border:1px solid #373747;border-radius:16px;padding:18px}
+.card h2{font-size:19px;margin-top:0}
+.card p{color:#bdbdca;line-height:1.5}
+.row{display:flex;gap:8px;flex-wrap:wrap}
+.row input{flex:1;min-width:100px}
+.result{overflow-wrap:anywhere;min-height:24px;margin-top:14px;color:#c5b0ff}
+footer{text-align:center;padding:28px;color:#aaa;font-size:13px}
+a{color:#c5b0ff}
+</style>
+</head>
+<body>
+<header>
+<div class="wrap">
+<h1>OVERLORD EVERYTHING</h1>
+<p id="intro">Бесплатные инструменты для игр, творчества и повседневных задач.</p>
+<select id="lang" aria-label="Language">
+<option value="ru">Русский</option>
+<option value="uk">Українська</option>
+<option value="en">English</option>
+</select>
+</div>
+</header>
+<main>
+<div class="tools">
+<section class="card">
+<h2 id="t1">🎮 Генератор ников</h2>
+<p id="d1">Создай игровой никнейм.</p>
+<div class="row">
+<input id="nickInput" placeholder="Твоё слово (необязательно)">
+<button id="nickBtn" onclick="nickname()">Создать</button>
+</div>
+<div class="result" id="nickResult"></div>
+</section>
+<section class="card">
+<h2 id="t2">✍️ Красивый текст</h2>
+<p id="d2">Преобразуй текст для профиля.</p>
+<div class="row">
+<input id="textInput" placeholder="Введи текст">
+<button id="textBtn" onclick="stylize()">Преобразовать</button>
+</div>
+<div class="result" id="textResult"></div>
+</section>
+<section class="card">
+<h2 id="t3">🔐 Генератор паролей</h2>
+<p id="d3">Создай случайный пароль прямо в браузере.</p>
+<div class="row">
+<input id="passLen" type="number" min="8" max="64" value="16" aria-label="Длина пароля">
+<button id="passBtn" onclick="password()">Создать</button>
+</div>
+<div class="result" id="passResult"></div>
+</section>
+<section class="card">
+<h2 id="t4">💡 Идеи для профиля</h2>
+<p id="d4">Получай идеи для оформления своего профиля.</p>
+<button id="ideaBtn" onclick="idea()">Новая идея</button>
+<div class="result" id="ideaResult"></div>
+</section>
+</div>
+</main>
+<footer>OVERLORD EVERYTHING · <span id="foot">Бесплатные онлайн-инструменты</span></footer>
+<script>
+const translations={
+ru:{
+intro:"Бесплатные инструменты для игр, творчества и повседневных задач.",
+t1:"🎮 Генератор ников",d1:"Создай игровой никнейм.",nph:"Твоё слово (необязательно)",nb:"Создать",
+t2:"✍️ Красивый текст",d2:"Преобразуй текст для профиля.",tph:"Введи текст",tb:"Преобразовать",
+t3:"🔐 Генератор паролей",d3:"Создай случайный пароль прямо в браузере.",pb:"Создать",
+t4:"💡 Идеи для профиля",d4:"Получай идеи для оформления своего профиля.",ib:"Новая идея",
+foot:"Бесплатные онлайн-инструменты",ideas:["Неоновый фиолетовый стиль","Тёмный минимализм","Киберпанк и зелёные акценты","Чёрно-белый аниме-стиль","Космическая тема с сиянием"]
+},
+uk:{
+intro:"Безкоштовні інструменти для ігор, творчості та щоденних завдань.",
+t1:"🎮 Генератор нікнеймів",d1:"Створи ігровий нікнейм.",nph:"Твоє слово (необов'язково)",nb:"Створити",
+t2:"✍️ Гарний текст",d2:"Перетвори текст для профілю.",tph:"Введи текст",tb:"Перетворити",
+t3:"🔐 Генератор паролів",d3:"Створи випадковий пароль у браузері.",pb:"Створити",
+t4:"💡 Ідеї для профілю",d4:"Отримуй ідеї для оформлення профілю.",ib:"Нова ідея",
+foot:"Безкоштовні онлайн-інструменти",ideas:["Неоновий фіолетовий стиль","Темний мінімалізм","Кіберпанк і зелені акценти","Чорно-білий аніме-стиль","Космічна тема зі сяйвом"]
+},
+en:{
+intro:"Free tools for gaming, creativity and everyday tasks.",
+t1:"🎮 Nickname generator",d1:"Create a gaming nickname.",nph:"Your word (optional)",nb:"Generate",
+t2:"✍️ Fancy text",d2:"Transform text for your profile.",tph:"Enter text",tb:"Transform",
+t3:"🔐 Password generator",d3:"Generate a random password in your browser.",pb:"Generate",
+t4:"💡 Profile ideas",d4:"Get ideas for your profile design.",ib:"New idea",
+foot:"Free online tools",ideas:["Neon purple style","Dark minimalism","Cyberpunk with green accents","Black and white anime style","Glowing cosmic theme"]
+}
+};
+function tr(){return translations[document.getElementById("lang").value]}
+function setLanguage(){
+let t=tr();
+["intro","t1","d1","t2","d2","t3","d3","t4","d4","foot"].forEach(id=>document.getElementById(id).textContent=t[id]);
+document.getElementById("nickInput").placeholder=t.nph;
+document.getElementById("nickBtn").textContent=t.nb;
+document.getElementById("textInput").placeholder=t.tph;
+document.getElementById("textBtn").textContent=t.tb;
+document.getElementById("passBtn").textContent=t.pb;
+document.getElementById("ideaBtn").textContent=t.ib;
+document.documentElement.lang=document.getElementById("lang").value;
+}
+document.getElementById("lang").addEventListener("change",setLanguage);
+function nickname(){
+let base=document.getElementById("nickInput").value.trim();
+let a=["Dark","Over","Night","Shadow","Neo","Cyber","Ghost","Lunar"];
+let b=["Lord","Wolf","Storm","Blade","Nexus","Phantom","Core","Frost"];
+let name=base||a[Math.floor(Math.random()*a.length)]+b[Math.floor(Math.random()*b.length)];
+document.getElementById("nickResult").textContent=name;
+}
+function stylize(){
+let s=document.getElementById("textInput").value.trim();
+if(!s){document.getElementById("textResult").textContent="";return}
+let map={"a":"𝒂","b":"𝒃","c":"𝒄","d":"𝒅","e":"𝒆","f":"𝒇","g":"𝒈","h":"𝒉","i":"𝒊","j":"𝒋","k":"𝒌","l":"𝒍","m":"𝒎","n":"𝒏","o":"𝒐","p":"𝒑","q":"𝒒","r":"𝒓","s":"𝒔","t":"𝒕","u":"𝒖","v":"𝒗","w":"𝒘","x":"𝒙","y":"𝒚","z":"𝒛"};
+document.getElementById("textResult").textContent=s.split("").map(c=>map[c.toLowerCase()]||c).join("");
+}
+function password(){
+let n=Math.max(8,Math.min(64,Number(document.getElementById("passLen").value)||16));
+let chars="ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789!@#$%&*?";
+let out="";
+if(window.crypto&&crypto.getRandomValues){
+let bytes=new Uint8Array(n);crypto.getRandomValues(bytes);
+for(let x of bytes)out+=chars[x%chars.length];
+}else{
+for(let i=0;i<n;i++)out+=chars[Math.floor(Math.random()*chars.length)];
+}
+document.getElementById("passResult").textContent=out;
+}
+function idea(){
+let list=tr().ideas;
+document.getElementById("ideaResult").textContent=list[Math.floor(Math.random()*list.length)];
+}
+setLanguage();
+</script>
+</body>
+  </html>
